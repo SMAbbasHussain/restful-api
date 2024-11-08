@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product CRUD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fc;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .create-form, .search-form {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .create-form input,
+    .create-form button,
+    .search-form input,
+    .search-form button {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .create-form input,
+    .search-form input {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    .create-form button,
+    .search-form button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .create-form button:hover,
+    .search-form button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f8f9fa;
+      color: #555;
+    }
+
+    td {
+      background-color: #fff;
+      color: #333;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f1f1f1;
+    }
+
+    .actions button {
+      background-color: #28a745;
+      margin-right: 10px;
+    }
+
+    .actions button.delete {
+      background-color: #dc3545;
+    }
+
+    .actions button:hover {
+      opacity: 0.8;
+    }
+
+    .actions button:focus {
+      outline: none;
+    }
+
+    /* Tooltip styles */
+    .tooltip {
+      position: absolute;
+      background-color: #333;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: none;
+      z-index: 10;
+    }
+
+    .tooltip.active {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Manage Products</h1>
+
+    <!-- Create Product Form -->
+    <div class="create-form">
+      <input type="text" id="productName" placeholder="Enter product name" />
+      <input type="number" id="productPrice" placeholder="Enter product price" />
+      <button onclick="createProduct()">Create Product</button>
+    </div>
+
+    <!-- Search Product by ID or Name -->
+    <div class="search-form">
+      <input type="text" id="productId" placeholder="Enter product ID or name to search" />
+      <button onclick="readProduct()">Search Product</button>
+    </div>
+
+    <button onclick="fetchProducts()">Load Products</button>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="output"></tbody>
+    </table>
+  </div>
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <script src="crud.js"></script>
+</body>
+</html>
